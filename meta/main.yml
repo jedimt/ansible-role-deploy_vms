@@ -1,0 +1,18 @@
+galaxy_info:
+  author: jedimt
+  role_name: deploy_vms
+  description: Deploy one or more VMs to a vSphere cluster
+
+  license: MIT
+
+  min_ansible_version: "5"
+
+  platforms:
+    - name: vCenter
+      versions:
+        - "6.7"
+
+  galaxy_tags:
+    - vm
+
+dependencies: []

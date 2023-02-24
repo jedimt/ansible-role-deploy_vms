@@ -1,0 +1,40 @@
+---
+# vars file for ansible-role-deploy-vms
+
+# Folder where the VMs should be deployed
+vcenter_folder: '/Santa Clara/vm/Kubernetes'
+
+# # vCenter IP address
+# vcenter_ip: 10.100.24.31
+
+# vCenter datacenter to deploy VMs to
+vcenter_datacenter: 'Santa Clara'
+
+# vCenter cluster to use
+vcenter_cluster: 'App-Factory'
+
+# vCenter IP or FQDN
+vcenter_host: 'devvcsa.tme.nebulon.com'
+
+# VM guest variables
+# Guest OS type. Types available here:
+# https://docs.vmware.com/en/VMware-HCX/4.5/hcx-user-guide/GUID-D4FFCBD6-9FEC-44E5-9E26-1BD0A2A81389.html
+guest_id: 'ubuntu64Guest'
+
+# The VM network name to attach to the VM
+guest_network: 'dvs-appfactory-vmnetwork'
+
+# Netmask to use for guest IP address (defined in inventory by default)
+guest_netmask: '255.255.252.0'
+
+# Guest IPv4 gateway
+guest_gateway: '10.100.24.1'
+
+# DNS server
+guest_dns_server: '10.100.24.11'
+
+# Domain search
+guest_domain_name: 'tme.nebulon.com'
+
+# Guest template to clone for VMs
+guest_template: 'ubuntu20.04.4_local'
