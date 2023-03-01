@@ -1,20 +1,17 @@
 ---
 # vars file for ansible-role-deploy-vms
 
-# Folder where the VMs should be deployed
-vcenter_folder: '/Santa Clara/vm/Kubernetes'
-
-# # vCenter IP address
-# vcenter_ip: 10.100.24.31
-
 # vCenter datacenter to deploy VMs to
-vcenter_datacenter: 'Santa Clara'
+vcenter_datacenter: 'SC0'
+
+# Folder where the VMs should be deployed
+vcenter_folder: '/{{ vcenter_datacenter }}/vm/Kubernetes'
 
 # vCenter cluster to use
-vcenter_cluster: 'App-Factory'
+vcenter_cluster: 'AppFactory'
 
 # vCenter IP or FQDN
-vcenter_host: 'devvcsa.tme.nebulon.com'
+vcenter_hostname: 'devvcsa.tme.nebulon.com'
 
 # VM guest variables
 # Guest OS type. Types available here:
@@ -22,7 +19,7 @@ vcenter_host: 'devvcsa.tme.nebulon.com'
 guest_id: 'ubuntu64Guest'
 
 # The VM network name to attach to the VM
-guest_network: 'dvs-appfactory-vmnetwork'
+guest_network: 'dvs_appfactory-vmnetwork'
 
 # Netmask to use for guest IP address (defined in inventory by default)
 guest_netmask: '255.255.252.0'
@@ -38,3 +35,7 @@ guest_domain_name: 'tme.nebulon.com'
 
 # Guest template to clone for VMs
 guest_template: 'ubuntu20.04.4_local'
+
+# Vault credentials
+vcenter_username: "{{ vault_vcenter_username }}"
+vcenter_password: "{{ vault_vcenter_password }}"

@@ -4,10 +4,6 @@
 # Get a list of VMs. If we find all the hosts, skip deployment
 - name: Gather all VMs from folder {{ vcenter_folder }}
   community.vmware.vmware_vm_info:
-    hostname: '{{ vcenter_host }}'
-    username: '{{ vault_vcenter_username }}'
-    password: '{{ vault_vcenter_password }}'
-    validate_certs: false
     folder: "{{ vcenter_folder }}"
   delegate_to: localhost
   register: vm_info
@@ -47,10 +43,6 @@
 # Get a list of possible datastores
 - name: Gather available datastores
   community.vmware.vmware_datastore_info:
-    hostname: '{{ vcenter_host }}'
-    username: '{{ vault_vcenter_username }}'
-    password: '{{ vault_vcenter_password }}'
-    validate_certs: false
     datacenter: "{{ vcenter_datacenter }}"
   register: datastores
   when: "vms_found != vm_inventory"
@@ -67,10 +59,6 @@
 
 - name: Deploy VM from template
   community.vmware.vmware_guest:
-    hostname: "{{ vcenter_host }}"
-    username: '{{ vault_vcenter_username }}'
-    password: '{{ vault_vcenter_password }}'
-    validate_certs: false
     datacenter: "{{ vcenter_datacenter }}"
     cluster: "{{ vcenter_cluster }}"
     folder: "{{ vcenter_folder }}"
@@ -111,12 +99,8 @@
 
 - name: Power on VMs
   community.vmware.vmware_guest_powerstate:
-    hostname: "{{ vcenter_host }}"
-    username: '{{ vault_vcenter_username }}'
-    password: '{{ vault_vcenter_password }}'
     folder: '{{ vcenter_folder }}'
     name: "{{ hostvars[item]['inventory_hostname'] }}"
     state: powered-on
-    validate_certs: false
   with_items: "{{ groups['servers'] }}"
   tags: power
