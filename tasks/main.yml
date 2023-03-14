@@ -6,6 +6,7 @@
   community.vmware.vmware_vm_info:
     folder: "{{ vcenter_folder }}"
   delegate_to: localhost
+  connection: local
   register: vm_info
   tags: vm_info
 
@@ -17,6 +18,7 @@
 # This gives a list like so:
 # {
 #     "vms_found": [
+#         "dev-k8s-haproxy-01.tme.nebulon.com",
 #         "dev-k8s-haproxy-01.tme.nebulon.com",
 #         "dev-k8s-master-01.tme.nebulon.com",
 #         "dev-k8s-master-02.tme.nebulon.com",
@@ -103,4 +105,6 @@
     name: "{{ hostvars[item]['inventory_hostname'] }}"
     state: powered-on
   with_items: "{{ groups['servers'] }}"
+  notify:
+    - Pause for customization
   tags: power

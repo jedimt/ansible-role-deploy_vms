@@ -4,3 +4,7 @@
 - name: Set vm_deployed flag
   ansible.builtin.set_fact:
     skip_vm_check: false
+
+- name: Pause for customization
+  ansible.builtin.pause:
+    minutes: 1
