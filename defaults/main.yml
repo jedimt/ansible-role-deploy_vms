@@ -1,5 +1,5 @@
 ---
-# defaults file for ansible-role-deploy-vms
+# defaults file for jedimt.deploy_vms
 
 # vCenter datacenter to deploy VMs to
 vcenter_datacenter: 'SC0'

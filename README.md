@@ -59,7 +59,7 @@ Example Playbook
         - "../../credentials.yml"
 
       roles:
-        - ansible-role-deploy-vms
+        - jedimt.deploy_vms
 
 License
 -------
